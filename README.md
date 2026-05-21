@@ -1,160 +1,300 @@
-🎤 Speech AI Predictor — Automated Rubric-Based Speech Scoring
+# 🎤 Speech AI Predictor  
+### Automated Rubric-Based Speech Evaluation System
 
-This project is a lightweight NLP-powered speech evaluation system built with Streamlit.
-It analyzes a written transcript of a speech and scores it according to a customizable rubric stored in Rubric.xlsx.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge&logo=python">
+  <img src="https://img.shields.io/badge/Streamlit-WebApp-red?style=for-the-badge&logo=streamlit">
+  <img src="https://img.shields.io/badge/NLP-Powered-success?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Deploy-Render-purple?style=for-the-badge">
+</p>
 
-No heavy ML frameworks (no torch, no transformers) — fully deployable on Render or any lightweight hosting.
+---
 
-🚀 Features
-✅ Rubric-Based Scoring
+## 📌 Overview
 
-Each row in Rubric.xlsx defines:
+**Speech AI Predictor** is an intelligent NLP-powered speech evaluation system that automatically analyzes speech transcripts and generates rubric-based scores.
 
-Criterion name
+The project is designed to be:
 
-Description
+✅ Lightweight  
+✅ Fast  
+✅ Fully customizable  
+✅ Easily deployable on Render or any cloud platform  
 
-Keywords
+Unlike heavy AI systems, this project uses traditional NLP and machine learning techniques without requiring PyTorch or Transformers.
 
-Min/max word limits
+---
 
-Weight
-You can modify this file to change the scoring logic without touching the code.
+# 🚀 Features
 
-✅ Automated NLP Analysis
+## ✅ Automated Speech Evaluation
 
-The app calculates:
+The system analyzes:
 
-Keyword coverage
+- Grammar quality
+- Keyword relevance
+- Vocabulary richness
+- Sentiment
+- Speech pacing
+- Filler words
+- Semantic similarity
 
-Grammar errors (spell-check based)
+---
 
-Vocabulary richness (TTR)
+## ✅ Fully Customizable Rubric System
 
-Filler words
+All scoring logic is controlled through:
 
-Sentiment score
+```bash
+Rubric.xlsx
+```
 
-Speech rate (WPM)
+You can modify:
 
-Semantic similarity using TF-IDF
+- Criterion names
+- Weights
+- Keywords
+- Descriptions
+- Word limits
 
-✅ Detailed Output
+without changing any code.
 
-Final score (0–100)
+---
 
-Individual criterion breakdown
+## ✅ NLP-Based Scoring Engine
 
-Diagnostic information
-(word count, WPM, grammar errors, sentiment, etc.)
+The application uses:
 
-✅ Fast & Deployable
+| Feature | Technique Used |
+|---|---|
+| Keyword Matching | TF-IDF |
+| Semantic Similarity | Cosine Similarity |
+| Grammar Analysis | SpellChecker |
+| Vocabulary Richness | Type Token Ratio |
+| Sentiment Analysis | VaderSentiment |
+| Speech Speed | WPM Calculation |
 
-Works on Render because it uses only lightweight libraries:
+---
 
-scikit-learn
+## ✅ Detailed Analytics Dashboard
 
-numpy
+The app displays:
 
-nltk
+- Final score (0–100)
+- Criterion-wise breakdown
+- Grammar error count
+- Word count
+- WPM
+- Vocabulary metrics
+- Sentiment polarity
+- Filler word frequency
 
-pyspellchecker
+---
 
-pandas
+# 🧠 System Workflow
 
-📁 Project Structure
-├── app.py              # Streamlit app
-├── Rubric.xlsx         # Main scoring rubric (must be in root folder)
-├── requirements.txt    # All dependencies for deployment
-└── README.md           # Project documentation
+```text
+User Transcript
+       ↓
+Text Preprocessing
+       ↓
+NLP Feature Extraction
+       ↓
+Rubric Evaluation
+       ↓
+Weighted Score Calculation
+       ↓
+Final AI-Based Speech Score
+```
 
-🧠 How It Works
+---
 
-User pastes transcript
+# 📂 Project Structure
 
-The app tokenizes text → extracts words, sentences, fillers, misspellings
+```bash
+Speech-AI-Predictor/
+│
+├── app.py                # Main Streamlit application
+├── Rubric.xlsx           # Scoring rubric configuration
+├── requirements.txt      # Dependencies
+├── README.md             # Documentation
+└── images/               # Screenshots (optional)
+```
 
-For each rubric criterion:
+---
 
-Keyword match → score
+# ⚙️ Technologies Used
 
-Word count check → score
+## 🖥️ Frontend
 
-Semantic similarity → TF-IDF cosine score
+- Streamlit
 
-Rule overrides for:
-grammar, filler words, vocabulary, sentiment, speech rate
+## 🧠 NLP & ML
 
-Weighted score computed → normalized to 0–100
+- Scikit-learn
+- NLTK
+- VaderSentiment
+- PySpellChecker
+- NumPy
+- Pandas
 
-UI displays:
+---
 
-Score
+# 📊 Evaluation Parameters
 
-Table of all criteria
+The AI evaluates speeches using:
 
-Debug insights
+| Parameter | Purpose |
+|---|---|
+| Keyword Coverage | Topic relevance |
+| Grammar Accuracy | Language quality |
+| Vocabulary Richness | Lexical diversity |
+| Filler Words | Speech fluency |
+| Sentiment Score | Emotional tone |
+| Speech Rate | Delivery effectiveness |
+| Semantic Similarity | Contextual relevance |
 
-🛠️ Installation Instructions
-1️⃣ Clone the repository
+---
+
+# 🛠️ Installation Guide
+
+## 1️⃣ Clone Repository
+
+```bash
 git clone https://github.com/mjha5279/Speech-AI-Predictor.git
 cd Speech-AI-Predictor
+```
 
-2️⃣ Install dependencies
+---
+
+## 2️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-3️⃣ Run Streamlit
+---
+
+## 3️⃣ Run Streamlit App
+
+```bash
 streamlit run app.py
+```
 
-☁️ Deployment (Render)
+---
 
-Push your repo to GitHub
+# ☁️ Deployment on Render
 
-Go to Render → New Web Service
+## 🔹 Step 1 — Push to GitHub
 
-Select this repo
+Upload your project to GitHub.
 
-Set:
+---
 
-Build Command: pip install -r requirements.txt
+## 🔹 Step 2 — Create Render Web Service
 
-Start Command: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+Go to:
 
-Deploy
+```text
+https://render.com
+```
 
-📊 Rubric Format (Rubric.xlsx)
+Create:
 
-Your Excel sheet must contain a sheet named:
+```text
+New Web Service
+```
 
+---
+
+## 🔹 Step 3 — Configure Build Settings
+
+### Build Command
+
+```bash
+pip install -r requirements.txt
+```
+
+### Start Command
+
+```bash
+streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+```
+
+---
+
+# 📑 Rubric Format
+
+Your Excel file must contain:
+
+## Sheet Name
+
+```text
 Rubrics
+```
 
+## Required Columns
 
-And columns:
+| Column Name | Description |
+|---|---|
+| criterion_name | Name of criterion |
+| description | Criterion details |
+| keywords | Important words |
+| min_words | Minimum allowed words |
+| max_words | Maximum allowed words |
+| weight | Criterion importance |
 
-criterion_name	description	keywords	min_words	max_words	weight
+---
 
-You can add as many rows as you want.
-Every criterion is automatically processed.
+# 📸 Screenshots
 
-📷 Screenshots (Optional)
+## 🔹 Home Interface
 
-You can add screenshots here later like:
+```md
+![Home](images/home.png)
+```
 
-![App Screenshot](images/app.png)
+## 🔹 Analysis Dashboard
 
-🙌 Credits
+```md
+![Dashboard](images/dashboard.png)
+```
 
-Developed using:
+---
 
-Streamlit
+# 🔥 Why This Project?
 
-Scikit-learn
+✔ No heavy deep learning frameworks  
+✔ Fast execution  
+✔ Easy deployment  
+✔ Dynamic rubric system  
+✔ Modular architecture  
+✔ Beginner-friendly  
 
-NLTK
+---
 
-VaderSentiment
+# 📈 Future Improvements
 
-PySpellChecker
+- 🎙️ Real-time voice input
+- 🧠 Deep learning scoring models
+- 📊 Advanced analytics dashboard
+- 🌐 Multi-language support
+- 📁 PDF report generation
+- ☁️ Database integration
 
-📬 Contact
+---
+
+# 🤝 Contribution
+
+Contributions are welcome.
+
+Fork the repository and submit a pull request.
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
 
