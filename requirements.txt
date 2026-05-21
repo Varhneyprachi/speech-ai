@@ -1,0 +1,8 @@
+streamlit
+pandas
+openpyxl
+scikit-learn
+vaderSentiment
+pyspellchecker
+nltk
+sentence-transformers-lite
